@@ -27,7 +27,10 @@ def main():
     
 def addsub():
     #add subtitles
-    command_sub = 'ffmpeg -y -i "'+ original_file + '" -vf '+ "subtitles=output-audio_(Vocals)_UVR-MDX-NET-Inst_HQ_1.srt:force_style='Fontname=Consolas,BackColour=&H80000000,Spacing=0.2,Outline=0,Shadow=0.75' " +'"' + original_file + '_sub.mp4"'
+    command_sub = 'ffmpeg -y -i .\output-audio_(Vocals)_UVR-MDX-NET-Inst_HQ_1.srt sub.ass'
+    print(command_sub)
+    subprocess.run(command_sub)
+    command_sub = 'ffmpeg -y -i "'+ original_file + '" -vf '+ "subtitles=sub.ass:force_style='Fontname=Consolas,BackColour=&H80000000,Spacing=0.2,Outline=0,Shadow=0.75' " +'"' + original_file + '_sub.mp4"'
     print(command_sub)
     subprocess.run(command_sub)
     
@@ -46,7 +49,7 @@ def splitaudio():
     
 def createsub():
      # create transcription
-    command_whisperx = "whisperx " + secondary_stem_path + " --model large-v2 --batch_size 4 --max_line_width 36 --highlight_words True --word_timestamps True --max_line_count 2"
+    command_whisperx = "whisperx " + secondary_stem_path + " --model large-v2 --batch_size 4 --max_line_width 36 --highlight_words True --max_line_count 1"
     print(command_whisperx)
     subprocess.run(command_whisperx)
 if __name__ == "__main__":

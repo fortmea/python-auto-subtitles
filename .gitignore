@@ -1,3 +1,11 @@
 
 desktop.ini
 ffmpeg.exe
+*.wav
+*.vtt
+*.txt
+*.tsv
+*.srt
+*.json
+*.ass
+*.aac
